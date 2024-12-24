@@ -16,8 +16,8 @@
  * or connect to: http://www.gnu.org/licenses/old-licenses/lgpl-2.1.html
  */
 
-import 'package:kosher_dart/src/hebrewcalendar/jewish_date.dart';
 import 'package:kosher_dart/src/hebrewcalendar/daf.dart';
+import 'package:kosher_dart/src/hebrewcalendar/jewish_date.dart';
 import 'package:kosher_dart/src/hebrewcalendar/yerushalmi_yomi_calculator.dart';
 import 'package:kosher_dart/src/hebrewcalendar/yomi_calculator.dart';
 import 'package:kosher_dart/src/util/geo_location.dart';
@@ -185,7 +185,7 @@ class JewishCalendar extends JewishDate {
   /// 	 {@link #getInIsrael() out of Israel} on the 23rd of Tishrei.
   static const int SIMCHAS_TORAH = 19;
 
-  // static const int EREV_CHANUKAH = 20;// probably remove this
+  static const int EREV_CHANUKAH = 20; // probably remove this
   /// The holiday of Chanukah. 8 days starting on the 25th day Kislev.
   static const int CHANUKAH = 21;
 
@@ -1591,10 +1591,9 @@ class JewishCalendar extends JewishDate {
         }
         break;
       case JewishDate.KISLEV: // no yomtov in CHESHVAN
-        // if (day == 24) {
-        // return EREV_CHANUKAH;
-        // } else
-        if (day >= 25) {
+        if (day == 24) {
+          return EREV_CHANUKAH;
+        } else if (day >= 25) {
           return CHANUKAH;
         }
         break;
